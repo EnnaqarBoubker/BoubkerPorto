@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-// const {getUserManager} = require('../controllers/AdmController')
-// const protect = require('../middlewares/authMiddleware')
-// const checkRoleManager = require('../middlewares/checkRoleManager')
+const {getUserAdmin} = require('../controllers/AdminController')
+const protect = require('../middleware/authMiddleware')
+const checkRoleManager = require('../middleware/checkRoleAdmin')
 
-// router.get('/manager/me',protect, checkRoleManager, getUserManager);
+router.get('/admin/me', protect, getUserAdmin);
 
 
 
