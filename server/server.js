@@ -13,16 +13,22 @@ const coockieparser = require('cookie-parser')
 app.use(express.urlencoded({ extended: true })); //* this is meddleware
 app.use(coockieparser())
 app.use(express.json()); //* this is meddleware
+app.use(express.static('uploads'))
+
 
 //* import Routes
 const RouterAuth = require('./routes/AuthRouter')
 const AdminRouter = require('./routes/AdminRouter');
+const ProjectRouter = require('./routes/ProjectRouter')
 const { tryCatch } = require('./utils/tryCatch');
+
 
 
 //* Routes middlewares
 app.use('/api/auth', RouterAuth)
 app.use('/api/user', AdminRouter)
+app.use('/api/project', ProjectRouter)
+
 
 app.use(ErrorHandler)
 
