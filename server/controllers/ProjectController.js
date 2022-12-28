@@ -107,10 +107,15 @@ const updateProject = asyncHandler(async (req, res, next) => {
         }, { new: true })
 
     console.log(proj);
-    res.status(200).json({
-        mess: 'update succefuly',
-        proj
-    })
+    if (proj) {
+        res.status(200).json({
+            mess: 'update successfuly',
+            proj
+        })
+    } else {
+        res.status(404)
+        throw new Error('not found')
+    }
 
 
 })
@@ -122,15 +127,18 @@ const updateProject = asyncHandler(async (req, res, next) => {
 
 const deleteProject = asyncHandler(async (req, res, next) => {
     const id = req.params.id
-    try {
+    
         const proj = await ProjectModel.findByIdAndDelete({ _id: id })
+        if(!proj){
+            res.status(404)
+            throw new Error('not found')
+        }
+        
         res.status(200).json({
             mess: 'delete succefuly',
             proj
         })
-    } catch (error) {
-        console.log(error);
-    }
+    
 })
 
 

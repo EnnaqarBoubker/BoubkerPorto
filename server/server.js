@@ -20,6 +20,7 @@ app.use(express.static('uploads'))
 const RouterAuth = require('./routes/AuthRouter')
 const AdminRouter = require('./routes/AdminRouter');
 const ProjectRouter = require('./routes/ProjectRouter')
+const BlogRouter = require('./routes/BlogsRouter')
 const { tryCatch } = require('./utils/tryCatch');
 
 
@@ -28,6 +29,7 @@ const { tryCatch } = require('./utils/tryCatch');
 app.use('/api/auth', RouterAuth)
 app.use('/api/user', AdminRouter)
 app.use('/api/project', ProjectRouter)
+app.use('/api/blog', BlogRouter)
 
 
 app.use(ErrorHandler)
