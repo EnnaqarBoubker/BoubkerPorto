@@ -21,6 +21,7 @@ const RouterAuth = require('./routes/AuthRouter')
 const AdminRouter = require('./routes/AdminRouter');
 const ProjectRouter = require('./routes/ProjectRouter')
 const BlogRouter = require('./routes/BlogsRouter')
+const CommentRouter = require('./routes/CommentRouter')
 const { tryCatch } = require('./utils/tryCatch');
 
 
@@ -30,6 +31,7 @@ app.use('/api/auth', RouterAuth)
 app.use('/api/user', AdminRouter)
 app.use('/api/project', ProjectRouter)
 app.use('/api/blog', BlogRouter)
+app.use('/api/comment', CommentRouter)
 
 
 app.use(ErrorHandler)

@@ -6,11 +6,11 @@ const CommentSchema = new Schema({
         required: true,
     },
     email: {
-        type: [String],
+        type: String,
         required: true,
     },
     comment: {
-        type: [String],
+        type: String,
         required: true
     },
     date: {
