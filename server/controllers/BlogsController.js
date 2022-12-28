@@ -121,6 +121,10 @@ const deleteBlog = asyncHandler(async (req, res, next) => {
     const id = req.params.id
     try {
         const blog = await BlogModel.findByIdAndDelete({ _id: id })
+        if (!blog) {
+            res.status(404)
+            throw new Error('Blog not found')
+        }
         res.status(200).json({
             mess: 'delete succefuly',
             blog
