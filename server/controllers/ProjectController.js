@@ -9,6 +9,12 @@ const asyncHandler = require('express-async-handler')
 
 const addProject = asyncHandler(async (req, res, next) => {
     const { title, techno, description } = req.body
+    if (!title || !techno || !description || !req.files) {
+        res.status(400)
+        throw new Error('Please Add All fildes')
+    }
+        
+    
 
     const img = [];
     await req.files.forEach((filePath) => {
@@ -73,20 +79,13 @@ const getProjectById = asyncHandler(async (req, res, next) => {
 
 const updateProject = asyncHandler(async (req, res, next) => {
     const { title, description, techno } = req.body
-    // const image = req.files.file
     const id = req.params.id
- console.log('ibioooooo');
-//  if (!req.files || Object.keys(req.files).length === 0) {
-//     return res.status(400).send('No files were uploaded.');
-//   }
-    // if (!title || !description || !techno) {
-    //     res.status(400)
-    //     throw new Error('Please Add All fildes')
-    // }
+
+    if (!title || !description || !techno || !req.files) {
+        res.status(400)
+        throw new Error('Please Add All fildes')
+    }
     
-
-
-
     const img = [];
     console.log()
     await req.files.forEach((filePath) => {
@@ -101,6 +100,7 @@ const updateProject = asyncHandler(async (req, res, next) => {
             _id: id
         },
         {
+            image: img,
             title: title,
             description: description,
             techno: techno,

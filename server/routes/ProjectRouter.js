@@ -6,7 +6,7 @@ const {upload} = require('../middleware/multer')
 router.post('/addProject',upload, addProject)
 router.get('/getAllProject', getAllProject)
 router.get('/getProjectById/:id', getProjectById)
-router.put('/updateProject/:id', updateProject)
+router.put('/updateProject/:id', upload, updateProject)
 router.delete('/deleteProject/:id', deleteProject)
 
 
