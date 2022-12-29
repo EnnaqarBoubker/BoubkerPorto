@@ -92,10 +92,10 @@ const SideBar = () => {
                                         </Link>
                                     </li>
                                     <li class={Link_checker[2]}>
-                                        <Link title="Products" to="/products"
+                                        <Link title="Products" to="/project"
                                             class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
                                             <img class="img25" src="assets/images/article.png" alt="Products" />
-                                            <span>Products</span>
+                                            <span>Projects</span>
                                         </Link>
                                     </li>
                                     <li class={Link_checker[3]}>

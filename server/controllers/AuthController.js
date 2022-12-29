@@ -17,7 +17,6 @@ const sendEmail = require('../utils/sendEmail')
 const login = asyncHandler(async (req, res) => {
     const { email, password } = req.body
     const findUser = await UserModel.findOne({ email })
-    console.log(findUser);
     if (!email || !password) {
         res.status(400)
         throw new Error('please add all fields')
@@ -25,7 +24,8 @@ const login = asyncHandler(async (req, res) => {
 
     if (findUser && (await bcrypt.compare(password, findUser.password))) {
         if(findUser.isVerified == false){
-           return res.status(400).send("your email is not validated")
+           res.status(400)
+           throw new Error("your email is not validated")
         }
 
         //* create token 
@@ -37,6 +37,7 @@ const login = asyncHandler(async (req, res) => {
             name: findUser.name,
             email: findUser.email,
             token: token ,
+            role : findUser.role,
             message: 'logged in succefully',
           })
     } else {
@@ -51,48 +52,48 @@ const login = asyncHandler(async (req, res) => {
  * URL => /api/auth/register
  * access => Public
  */
-const register = asyncHandler(async (req, res) => {
-    const { name, email, password, password2 } = req.body
+// const register = asyncHandler(async (req, res) => {
+//     const { name, email, password, password2 } = req.body
 
-    if (!name || !email || !password || !password2) {
-        res.status(400)
-        throw new Error('please add all fields')
-    }else if(password != password2){
-        res.status(400)
-        throw new Error('Password not match')
-    }
-    //* check if user exist
-    const userExist = await UserModel.findOne({ email })
-    if (userExist) {
-        res.status(400)
-        throw new Error('Opps!! Email has been already taken')
-    }
+//     if (!name || !email || !password || !password2) {
+//         res.status(400)
+//         throw new Error('please add all fields')
+//     }else if(password != password2){
+//         res.status(400)
+//         throw new Error('Password not match')
+//     }
+//     //* check if user exist
+//     const userExist = await UserModel.findOne({ email })
+//     if (userExist) {
+//         res.status(400)
+//         throw new Error('Opps!! Email has been already taken')
+//     }
 
-    //* hash password
-    const salt = await bcrypt.genSalt(10)
-    const hashPassword = await bcrypt.hash(password, salt);
+//     //* hash password
+//     const salt = await bcrypt.genSalt(10)
+//     const hashPassword = await bcrypt.hash(password, salt);
 
-    //* create User 
-    const user = await UserModel.create({
-        name,
-        email,
-        password: hashPassword,
-        ValidateToken: crypto.randomBytes(64).toString('hex')
-    })
+//     //* create User 
+//     const user = await UserModel.create({
+//         name,
+//         email,
+//         password: hashPassword,
+//         ValidateToken: crypto.randomBytes(64).toString('hex')
+//     })
 
-    const subject = 'Virefier email'
-    const url = `<h2 >Please click Her For validate Your Email <a href="http://localhost:8080/api/auth/verifiemail/${user.ValidateToken}">validation</a></h2>`
+//     const subject = 'Virefier email'
+//     const url = `<h2 >Please click Her For validate Your Email <a href="http://localhost:8080/api/auth/verifiemail/${user.ValidateToken}">validation</a></h2>`
 
-    sendEmail(user.email, user.ValidateToken , subject, url)
+//     sendEmail(user.email, user.ValidateToken , subject, url)
 
-    if (user) {
-        res.status(201).send('User succussefuly, Please check your Email')
+//     if (user) {
+//         res.status(201).send('User succussefuly, Please check your Email')
 
-    } else {
-        res.status(400)
-        throw new Error('Invalide user data')
-    }
-})
+//     } else {
+//         res.status(400)
+//         throw new Error('Invalide user data')
+//     }
+// })
 
 
 /**
@@ -175,7 +176,6 @@ const generateToken = (id) => {
 
 module.exports = {
     login,
-    register,
     forgetPassword,
     resetPassword,
     virifierEmail

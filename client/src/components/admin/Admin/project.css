@@ -1,0 +1,10 @@
+.boubker {
+    position: absolute;
+    z-index: 9999;
+    top: 0rem;
+    left: 186px;
+    width: 54%;
+    padding: 11px 48px;
+    background: red;
+  }
+  
