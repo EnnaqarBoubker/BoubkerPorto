@@ -52,48 +52,48 @@ const login = asyncHandler(async (req, res) => {
  * URL => /api/auth/register
  * access => Public
  */
-// const register = asyncHandler(async (req, res) => {
-//     const { name, email, password, password2 } = req.body
+const register = asyncHandler(async (req, res) => {
+    const { name, email, password, password2 } = req.body
 
-//     if (!name || !email || !password || !password2) {
-//         res.status(400)
-//         throw new Error('please add all fields')
-//     }else if(password != password2){
-//         res.status(400)
-//         throw new Error('Password not match')
-//     }
-//     //* check if user exist
-//     const userExist = await UserModel.findOne({ email })
-//     if (userExist) {
-//         res.status(400)
-//         throw new Error('Opps!! Email has been already taken')
-//     }
+    if (!name || !email || !password || !password2) {
+        res.status(400)
+        throw new Error('please add all fields')
+    }else if(password != password2){
+        res.status(400)
+        throw new Error('Password not match')
+    }
+    //* check if user exist
+    const userExist = await UserModel.findOne({ email })
+    if (userExist) {
+        res.status(400)
+        throw new Error('Opps!! Email has been already taken')
+    }
 
-//     //* hash password
-//     const salt = await bcrypt.genSalt(10)
-//     const hashPassword = await bcrypt.hash(password, salt);
+    //* hash password
+    const salt = await bcrypt.genSalt(10)
+    const hashPassword = await bcrypt.hash(password, salt);
 
-//     //* create User 
-//     const user = await UserModel.create({
-//         name,
-//         email,
-//         password: hashPassword,
-//         ValidateToken: crypto.randomBytes(64).toString('hex')
-//     })
+    //* create User 
+    const user = await UserModel.create({
+        name,
+        email,
+        password: hashPassword,
+        ValidateToken: crypto.randomBytes(64).toString('hex')
+    })
 
-//     const subject = 'Virefier email'
-//     const url = `<h2 >Please click Her For validate Your Email <a href="http://localhost:8080/api/auth/verifiemail/${user.ValidateToken}">validation</a></h2>`
+    const subject = 'Virefier email'
+    const url = `<h2 >Please click Her For validate Your Email <a href="http://localhost:8080/api/auth/verifiemail/${user.ValidateToken}">validation</a></h2>`
 
-//     sendEmail(user.email, user.ValidateToken , subject, url)
+    sendEmail(user.email, user.ValidateToken , subject, url)
 
-//     if (user) {
-//         res.status(201).send('User succussefuly, Please check your Email')
+    if (user) {
+        res.status(201).send('User succussefuly, Please check your Email')
 
-//     } else {
-//         res.status(400)
-//         throw new Error('Invalide user data')
-//     }
-// })
+    } else {
+        res.status(400)
+        throw new Error('Invalide user data')
+    }
+})
 
 
 /**
@@ -105,14 +105,21 @@ const login = asyncHandler(async (req, res) => {
 const forgetPassword = asyncHandler(async (req, res) => {
     
     const {email} = req.body
+    if(!email){
+        res.status(400)
+        throw new Error('Please add your Email')
+    }
     const user = await UserModel.findOne({email})
-    if(!user)return res.status(400).send({err : 'Please add your Email'})
+    if(!user){
+        res.status(400)
+        throw new Error('Email not found')
+    }
     //create token
     const token = generateToken(user.id)
     console.log(token);
 
     const subject = 'Reset Password'
-    const url = `<h2 >Please click Her For validate Your Email <a href="http://localhost:8080/api/auth/resetpassword/${token}">Reset Your Password</a></h2>`
+    const url = `<h2 >Please click Her For validate Your Email <a href="http://localhost:3000/resetPassword/${token}">Reset Your Password</a></h2>`
     sendEmail(user.email, token, subject, url)
 
     res.status(200).json({mess : 'Re-send the password, please check your email'})
@@ -176,6 +183,7 @@ const generateToken = (id) => {
 
 module.exports = {
     login,
+    register,
     forgetPassword,
     resetPassword,
     virifierEmail

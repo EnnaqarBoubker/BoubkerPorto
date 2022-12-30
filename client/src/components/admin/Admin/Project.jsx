@@ -4,9 +4,19 @@ import './project.css'
 
 const Project = () => {
   const [showModel, setShowModel] = useState(false);
+  const [data, setData] = useState('');
+  const [formData, setFormData] = useState({title : '', description : '', image : ''});
+  const {title, description, image} = formData;
+
   const modelHandler = () => {
     setShowModel(!showModel);
   };
+
+const handleChange = (e) => {
+    e.preventDefault()
+    const url = ''
+
+}
 
   return (
     <>
@@ -40,132 +50,56 @@ const Project = () => {
               </button>
             </div>
           </div>
-          <div class="table-responsive card p-2">
-            <table class="table table-striped Table_responsive">
-              <thead>
-                <tr class="rounded tr_table">
-                  <th scope="col">id</th>
-                  <th scope="col">title</th>
-                  <th scope="col">url</th>
-                  <th scope="col">contenu</th>
-                  <th scope="col">delete</th>
-                  <th scope="col">update</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="rounded">
-                  <td scope="col"> 45 </td>
-                  <td scope="col"> Ahmed</td>
-                  <td scope="col"> fewwv</td>
-                  <td scope="col"> vwdvwrwv</td>
-                  <td scope="col"> cdscc</td>
-                  <td scope="col"> cdcwdcwc</td>
-                </tr>
-
-                <tr class="rounded">
-                  <td scope="col"> 45 </td>
-                  <td scope="col"> Ahmed</td>
-                  <td scope="col"> fewwv</td>
-                  <td scope="col"> vwdvwrwv</td>
-                  <td scope="col"> cdscc</td>
-                  <td scope="col"> cdcwdcwc</td>
-                </tr>
-
-                <tr class="rounded">
-                  <td scope="col"> 45 </td>
-                  <td scope="col"> Ahmed</td>
-                  <td scope="col"> fewwv</td>
-                  <td scope="col"> vwdvwrwv</td>
-                  <td scope="col"> cdscc</td>
-                  <td scope="col"> cdcwdcwc</td>
-                </tr>
-
-                <tr class="rounded">
-                  <td scope="col"> 45 </td>
-                  <td scope="col"> Ahmed</td>
-                  <td scope="col"> fewwv</td>
-                  <td scope="col"> vwdvwrwv</td>
-                  <td scope="col"> cdscc</td>
-                  <td scope="col"> cdcwdcwc</td>
-                </tr>
-
-                <tr class="rounded">
-                  <td scope="col"> 45 </td>
-                  <td scope="col"> Ahmed</td>
-                  <td scope="col"> fewwv</td>
-                  <td scope="col"> vwdvwrwv</td>
-                  <td scope="col"> cdscc</td>
-                  <td scope="col"> cdcwdcwc</td>
-                </tr>
-
-                <tr class="rounded">
-                  <td scope="col"> 45 </td>
-                  <td scope="col"> Ahmed</td>
-                  <td scope="col"> fewwv</td>
-                  <td scope="col"> vwdvwrwv</td>
-                  <td scope="col"> cdscc</td>
-                  <td scope="col"> cdcwdcwc</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          {/*  */}
         </div>
 
         {showModel && (
           <div className="boubker">
-            <form>
-              <p className="text-center">Add New Product</p>
+            <form onSubmit={() => handleChange(e)}>
+              <h4 className="text-center" style={{ color : '#000' }}>Add New Project</h4>
               <div class="form-group">
-                <label for="exampleInputEmail1">image_produit</label>
+                <label>Image</label>
                 <input
-                  type=""
-                  name="image_produit"
+                  type="file"
+                  name="image"
                   class="form-control rounded-3"
-                  id="exampleInputEmail1"
-                  aria-describeProducty="emailHelp"
-                  placeholder="Enter image_produit"
+                  placeholder="Enter image de Project"
                 />
               </div>
 
               <div class="form-group">
-                <label for="exampleInputEmail1">title_produit</label>
+                <label>Description</label>
                 <input
                   type="text"
-                  name="title_produit"
+                  name="description"
                   class="form-control rounded-3"
-                  id="exampleInputEmail1"
-                  aria-describeProducty="emailHelp"
-                  placeholder="Enter title_produit"
+                  placeholder="Enter Description de project"
                 />
               </div>
 
               <div class="form-group">
-                <label for="exampleInputEmail1">description_produit</label>
+                <label>Title</label>
                 <input
                   type="text"
-                  name="description_produit"
+                  name="description"
                   class="form-control rounded-3"
-                  id="exampleInputEmail1"
-                  aria-describeProducty="emailHelp"
-                  placeholder="Enter description_produit"
+                  placeholder="Enter Title"
                 />
               </div>
               <div class="form-group">
-                <label for="exampleInputEmail1">prix_produit</label>
+                <label>Technologie</label>
                 <input
-                  type="number"
-                  name="prix_produit"
+                  type="text"
+                  name="techno"
                   class="form-control rounded-3"
-                  id="exampleInputEmail1"
-                  aria-describeProducty="emailHelp"
-                  placeholder="Enter prix_produit"
+                  placeholder="Enter Technologie"
                 />
               </div>
               <div className="w-100 d-flex justify-content-between">
-                <button class="btn bg-dark px-3 text-white mt-2 Button_ajoute" >Add</button>
-                      <button class="btn bg-dark px-3 text-white mt-2 Button_ajoute">Cancel</button>
+                <button class="btn bg-dark px-3 text-white mt-2 Button_ajoute" type="submit" >Add</button>
+                <button class="btn bg-dark px-3 text-white mt-2 Button_ajoute">Cancel</button>
               </div>
-              <p className="text-center text-danger"></p>
+              
             </form>
           </div>
         )}

@@ -82,7 +82,7 @@ const Login = () => {
           <div class="col d-flex justify-content-center"></div>
 
           <div class="col">
-            <a href="#!">Forgot password?</a>
+            <a href="/forgetPassword">Forgot password?</a>
           </div>
         </div>
 

@@ -1,12 +1,12 @@
 const router = require('express').Router();
 
-const {login, forgetPassword, resetPassword, virifierEmail} = require('../controllers/AuthController')
+const {login, register, forgetPassword, resetPassword, virifierEmail} = require('../controllers/AuthController')
 
 
 // router.get('/', test)
 
 router.post('/login', login);
-// router.post('/register', register);
+router.post('/register', register);
 router.post('/forgetpassword', forgetPassword);
 router.post('/resetpassword/:token', resetPassword)
 router.get('/verifiemail/:token', virifierEmail)
