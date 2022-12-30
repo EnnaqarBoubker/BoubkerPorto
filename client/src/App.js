@@ -8,6 +8,8 @@ import NotFound from './components/404';
 import Layout from './components/admin/Auth/Layout';
 import Login from './components/admin/Auth/Login';
 import RequireAuth from './Utils/RequireAuth';
+import ForgetPassword from './components/admin/Auth/ForgetPassword';
+import ResetPassword from './components/admin/Auth/ResetPassword';
 
 
 
@@ -32,6 +34,8 @@ function App() {
 
       <Route element={<Layout />}>
         <Route path='/login' element={<Login />} />
+        <Route path='/forgetPassword' element={<ForgetPassword/>} />
+        <Route path='/resetPassword/:token' element={<ResetPassword/>} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
