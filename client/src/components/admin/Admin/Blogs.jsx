@@ -5,14 +5,13 @@ import { Link, Navigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 
 
-const Project = () => {
+const Blogs = () => {
     
   const [showModel, setShowModel] = useState(false);
   //   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [techno, setTechno] = useState("");
   const [image, setImage] = useState("");
   const host = "http://localhost:8080/";
 //   const nav = useNavigate();
@@ -21,11 +20,12 @@ const Project = () => {
     setShowModel(!showModel);
   };
 
-  const url = "http://localhost:8080/api/project/getAllProject";
+  const url = "http://localhost:8080/api/Blog/getAllBlog";
   useEffect(() => {
     axios.get(url)
         .then((res) => {
-          setData(res.data.proj);
+            
+          setData(res.data.blog);
         })
         .catch((err) => {
           console.log(err);
@@ -40,12 +40,11 @@ const Project = () => {
     const formData = new FormData(e.target);
     formData.get("title");
     formData.get("description");
-    formData.get("techno");
     formData.append("image", image);
 
     let config = {
       method: "post",
-      url: "http://localhost:8080/api/project/addProject",
+      url: "http://localhost:8080/api/blog/addBlog",
       headers: {
         "content-type": "application/json",
         "content-type": "multipart/form-data",
@@ -72,7 +71,7 @@ const Project = () => {
 
 
     const deleteProject = (id) => {
-        const url = `http://localhost:8080/api/project/deleteProject/${id}`;
+        const url = `http://localhost:8080/api/Blog/deleteBlog/${id}`;
         axios.delete(url)
             .then((res) => {
                 console.log(res);
@@ -129,6 +128,7 @@ const Project = () => {
                 <tr className="rounded tr_table">
                   <th scope="col">image</th>
                   <th scope="col">title</th>
+                
                   <th scope="col">description</th>
                   <th scope="col">delete</th>
                   <th scope="col">update</th>
@@ -140,7 +140,7 @@ const Project = () => {
                         <tr className="rounded">
                         <td key={e._id} scope="col" className="img"><img src={host+e.image} /></td>
                         <td scope="col">{e.title}</td>
-                        <td scope="col">{e.techno} </td>
+                       
                         <td scope="col">{e.description} </td>
                         <td scope="col"> 
                         <button className="btn btn-success" >
@@ -183,7 +183,7 @@ const Project = () => {
               </div>
               <div className="form-group">
                 <label>Title</label>
-                <input
+                <input style={{   textTransform: 'capitalize' }}
                   type="text"
                   name="title"
                   className="form-control rounded-3"
@@ -195,25 +195,13 @@ const Project = () => {
 
               <div className="form-group">
                 <label>Description</label>
-                <input
+                <input style={{   textTransform: 'capitalize' }}
                   type="text"
                   name="description"
                   className="form-control rounded-3"
                   placeholder="Enter Description de project"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                />
-              </div>
-
-              <div className="form-group">
-                <label>technologie</label>
-                <input
-                  type="text"
-                  name="techno"
-                  className="form-control rounded-3"
-                  placeholder="Enter technologie"
-                  value={techno}
-                  onChange={(e) => setTechno(e.target.value)}
                 />
               </div>
               <div className="w-100 d-flex justify-content-between">
@@ -224,7 +212,7 @@ const Project = () => {
                   Add
                 </button>
                 <button className="btn bg-dark px-3 text-white mt-2 Button_ajoute">
-                <Link style={{ color : '#fff' }} to='/project'>Cancel </Link>
+                  Cancel
                 </button>
               </div>
             </form>
@@ -235,4 +223,4 @@ const Project = () => {
   );
 };
 
-export default Project;
+export default Blogs;

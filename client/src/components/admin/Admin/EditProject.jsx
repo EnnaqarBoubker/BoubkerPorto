@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState  } from "react";
-import { useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate, Link} from "react-router-dom";
 import axios from "axios";
 import "./project.css";
 import Swal from 'sweetalert2'
@@ -22,11 +22,10 @@ const EditProject = () => {
     const getProjById = async () => {
      await axios.get(url)
       .then((res) => {
-        
-        setTitle(res.data.title);
-        setDescription(res.data.description);
-        setTechno(res.data.techno);
-        setImage(res.data.image);
+        console.log(res.data.proj);
+        setTitle(res.data.proj.title);
+        setDescription(res.data.proj.description);
+        setTechno(res.data.proj.techno);
         })
         .catch((err) => {
             console.log(err);
@@ -35,7 +34,7 @@ const EditProject = () => {
     //   console.log(data);
     };
     getProjById();
-  }, []);
+  }, [id]);
 
 
   const handleSubmit = (e) => {
@@ -93,12 +92,13 @@ const EditProject = () => {
             <div className="form-group">
               <label>Image</label>
               <input
+           
                 type="file"
                 name="image"
                 placeholder="Enter image de Project"
                   value={image}
                   onChange={(e) => setImage(e.target.value)}
-                variant="outlined"
+               
               />
             </div>
             <div className="form-group">
@@ -144,7 +144,7 @@ const EditProject = () => {
                 Add
               </button>
               <button className="btn bg-dark px-3 text-white mt-2 Button_ajoute">
-                Cancel
+               <Link style={{ color : '#fff' }} to='/project'>Cancel </Link>
               </button>
             </div>
           </form>

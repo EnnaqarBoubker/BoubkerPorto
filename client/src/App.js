@@ -13,6 +13,8 @@ import ResetPassword from './components/admin/Auth/ResetPassword';
 import EditProject from './components/admin/Admin/EditProject';
 import BlogsDetails from './components/clients/component/BlogsDetails';
 import Layout from './components/clients/component/Layout';
+import Blogs from './components/admin/Admin/Blogs';
+
 
 
 
@@ -31,13 +33,16 @@ function App() {
     <Routes>
       <Route element={<Layout />} >
         <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<BlogsDetails />} />
+        <Route path="/blogsDetails/:id" element={<BlogsDetails />} />
       </Route>
+
+
       <Route element={<RequireAuth Roles={["admin"]} />}>
         <Route element={<LayoutAdmin />}>
           <Route path='/admin' element={<DashAdmin />} />
           <Route path='/project' element={<Project />} />
           <Route path='/editproject/:id' element={<EditProject />} />
+          <Route path='/blogsAdmin' element={<Blogs />} />
         </Route>
       </Route>
 

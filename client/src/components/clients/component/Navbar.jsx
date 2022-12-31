@@ -21,7 +21,7 @@ const Header = () => {
 
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item active"><a class="page-scroll" href="#home">Home</a></li>
+                                    <li class="nav-item active"><Link to="/" class="page-scroll">  Home</Link></li>
                                     <li class="nav-item"><Link class="page-scroll" to="/about">About</Link></li>
                                     <li class="nav-item"><a class="page-scroll" href="#service">Services</a></li>
                                     <li class="nav-item"><a class="page-scroll" href="#work">Portfolio</a></li>

@@ -1,7 +1,64 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+
+
 
 const BlogsDetails = () => {
-  return (
+  
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [image, setImage] = useState("");
+    const [date, setDate] = useState("");
+    const host = "http://localhost:8080/";
+    const id = useParams();
+
+    
+
+    useEffect(() => {
+
+        const url = `http://localhost:8080/api/Blog/getBlogById/${id.id}`;
+        console.log(url);
+        const getProjById = async () => {
+         await axios.get(url)
+          .then((res) => {
+            console.log(res.data.blog.title);
+            setTitle(res.data.blog.title);
+            setDescription(res.data.blog.description);
+            setImage(res.data.blog.image);
+            setDate(res.data.blog.date);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    
+        
+        };
+        getProjById();
+      }, [])
+
+// consommatio api the comment 
+
+const [comment, setComment] = useState([]);
+const [commentaire, setCommentaire] = useState("");
+const [name, setName] = useState("");
+const [email, setEmail] = useState("");
+
+const getComment = async () => {
+    await axios.get(`http://localhost:8080/api/comment/getComment/${id.id}`)
+    .then((res) => {
+        console.log(res.data.comment);
+        setComment(res.data.comment);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+};
+
+
+
+return (
     <>
       <main id="main">
         <div className="main-content paddsection">
@@ -13,14 +70,14 @@ const BlogsDetails = () => {
                     <div className="col-md-12">
                       <div className="block-main mb-30">
                         <img
-                          src="assets/images/blog-post-big.jpg"
+                          src={host+image}
                           className="img-responsive"
                           alt="reviews2"
                         />
                         <div className="content-main single-post padDiv">
                           <div className="journal-txt">
                             <h4>
-                              <a href="#">SO LETS MAKE THE MOST IS BEAUTIFUL</a>
+                              <a href="#">{title} </a>
                             </h4>
                           </div>
                           <div className="post-meta">
@@ -29,7 +86,7 @@ const BlogsDetails = () => {
                                 by:<a href="#">medsign</a>
                               </li>
                               <li className="date">
-                                date:<a href="#">March 31, 2017</a>
+                                date:<a href="#">{date} </a>
                               </li>
                               <li className="commont">
                                 <i className="ion-ios-heart-outline"></i>
@@ -38,55 +95,7 @@ const BlogsDetails = () => {
                             </ul>
                           </div>
                           <p className="mb-30">
-                            It is a long established fact that a reader will be
-                            distracted by the readable content of a page when
-                            looking at its layout. The point of using Lorem
-                            Ipsum is that it has a more-or-less normal
-                            distribution of letters, as opposed to using
-                            'Content here, content here', making it look like
-                            readable English. Many desktop publishing packages
-                            and web page editors now use Lorem Ipsum as their
-                            default model text, and a search for 'lorem ipsum'
-                            will uncover many web sites still in their infancy.
-                            Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose
-                            (injected humour and the like).
-                          </p>
-                          <p className="mb-30">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. Lorem Ipsum has been the
-                            industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and
-                            scrambled it to make a type specimen book. It has
-                            survived not only five centuries, but also the leap
-                            into electronic typesetting, remaining essentially
-                            unchanged. It was popularised in the 1960s with the
-                            release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing
-                            software like Aldus PageMaker including versions of
-                            Lorem Ipsum.
-                          </p>
-                          <blockquote>
-                            If you are still looking for that one person who
-                            will change your life, take a look in the mirror.
-                          </blockquote>
-                          <p className="mb-30">
-                            Contrary to popular belief, Lorem Ipsum is not
-                            simply random text. It has roots in a piece of
-                            classNameical Latin literature from 45 BC, making it
-                            over 2000 years old. Richard McClintock, a Latin
-                            professor at Hampden-Sydney College in Virginia,
-                            looked up one of the more obscure Latin words,
-                            consectetur, from a Lorem Ipsum passage, and going
-                            through the cites of the word in classNameical
-                            literature, discovered the undoubtable source. Lorem
-                            Ipsum comes from sections 1.10.32 and 1.10.33 of "de
-                            Finibus Bonorum et Malorum" (The Extremes of Good
-                            and Evil) by Cicero, written in 45 BC. This book is
-                            a treatise on the theory of ethics, very popular
-                            during the Renaissance. The first line of Lorem
-                            Ipsum, "Lorem ipsum dolor sit amet..", comes from a
-                            line in section 1.10.32.
+                            {description}
                           </p>
                         </div>
                       </div>

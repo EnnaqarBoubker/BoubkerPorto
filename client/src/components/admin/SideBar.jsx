@@ -72,17 +72,17 @@ const SideBar = () => {
                                         </Link>
                                     </li>
                                     <li className={Link_checker[2]}>
-                                        <Link title="Products" to="/project"
+                                        <Link title="Projects" to="/project"
                                             className="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
                                             <img className="img25" src="assets/images/article.png" alt="Products" />
                                             <span>Projects</span>
                                         </Link>
                                     </li>
                                     <li className={Link_checker[3]}>
-                                        <Link title="Categories" to="/categories"
+                                        <Link title="Blogs" to="/blogsAdmin"
                                             className="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
                                             <img className="img24" src="assets/images/categorie.png" alt="Categories" />
-                                            <span>Categories</span>
+                                            <span>Blogs</span>
                                         </Link>
                                     </li>
                                     <li className={Link_checker[4]}>
