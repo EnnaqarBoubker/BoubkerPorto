@@ -97,9 +97,9 @@ const register = asyncHandler(async (req, res) => {
 
 
 /**
- * method => Post
- * URL => /api/auth/forgetpassword
- * access => Public
+ * @method : Post
+ * @URL : /api/auth/forgetpassword
+ * @access : Public
  */
 
 const forgetPassword = asyncHandler(async (req, res) => {

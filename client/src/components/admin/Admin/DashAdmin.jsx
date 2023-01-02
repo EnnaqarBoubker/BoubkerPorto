@@ -4,45 +4,45 @@ const DashAdmin = () => {
 
   return (
     <>
-      <main class="main">
-        <div class="Container p-4 ">
-          <div class="d-flex justify-content-between border-bottom fw-bold fs-4">
-            <p class="">Dashboard</p>
+      <main className="main">
+        <div className="Container p-4 ">
+          <div className="d-flex justify-content-between border-bottom fw-bold fs-4">
+            <p className="">Dashboard</p>
           </div>
-          <div class="divs1 mt-3">
-            <div class="divs2 card">
-              <i class=""></i>
+          <div className="divs1 mt-3">
+            <div className="divs2 card">
+              <i className=""></i>
               <p>
                 Products
               </p>
-              <p class="num">
+              <p className="num">
                 453
               </p>
             </div>
-            <div class="divs2 card" id="wst1">
-              <i class=""></i>
+            <div className="divs2 card" id="wst1">
+              <i className=""></i>
               <p>
                 Categories
               </p>
-              <p class="num">
+              <p className="num">
                 3
               </p>
             </div>
-            <div class="divs2 card" id="wst2">
-              <i class=""></i>
+            <div className="divs2 card" id="wst2">
+              <i className=""></i>
               <p>
                 Comments
               </p>
-              <p class="num">
+              <p className="num">
                 34
               </p>
             </div>
-            <div class="divs2 card">
-              <i class=""></i>
-              <p class="">
+            <div className="divs2 card">
+              <i className=""></i>
+              <p className="">
                 Users
               </p>
-              <p class="num">
+              <p className="num">
                 78
               </p>
             </div>

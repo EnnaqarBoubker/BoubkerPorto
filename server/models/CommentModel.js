@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const BlogModel = require('./BlogsModel')
 const Schema = mongoose.Schema
 const CommentSchema = new Schema({
     name: {
@@ -12,6 +13,10 @@ const CommentSchema = new Schema({
     comment: {
         type: String,
         required: true
+    },
+    blog : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'BlogModel'
     },
     date: {
         type: Date,

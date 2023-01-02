@@ -52,91 +52,71 @@ const SideBar = () => {
 
     return (
         <>
-            <head>
-                <script src="js/dashboard_js/main.js"></script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                    crossOrigin="anonymous"></script>
-                <link rel="stylesheet" href="assets/css/SideBarStyle.css" />
-                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-                    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossOrigin="anonymous" />
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-                    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-                    crossOrigin="anonymous" />
-                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css" />
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                    crossOrigin="anonymous"></script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-                    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossOrigin="anonymous"></script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossOrigin="anonymous"></script>
-            </head>
             <div>
                 <header>
-                    <div class="side__bar p-0 d-flex flex-column justify-content-start">
-                        <div class="logo d-flex flex-column justify-content-center align-items-center">
-                            <a class="logo-1 my-4" href="">
+                    <div className="side__bar p-0 d-flex flex-column justify-content-start">
+                        <div className="logo d-flex flex-column justify-content-center align-items-center">
+                            <a className="logo-1 my-4" href="">
                                 <img src="assets/images/Logo.png" alt="LOGO" />
                                 <link rel="stylesheet" href="assets/css/main.css"></link>
                             </a>
                         </div>
                         <div>
-                            <nav class="mt-0 mt-1">
-                                <ul class="p-0">
-                                    <li class={Link_checker[1]}>
+                            <nav className="mt-0 mt-1">
+                                <ul className="p-0">
+                                    <li className={Link_checker[1]}>
                                         <Link title="Dashboard" to="/admin"
-                                            class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
-                                            <img class="img34" src="assets/images/home.png" alt="Dashboard" />
+                                            className="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
+                                            <img className="img34" src="assets/images/home.png" alt="Dashboard" />
                                             <span>Dashboard</span>
                                         </Link>
                                     </li>
-                                    <li class={Link_checker[2]}>
-                                        <Link title="Products" to="/project"
-                                            class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
-                                            <img class="img25" src="assets/images/article.png" alt="Products" />
+                                    <li className={Link_checker[2]}>
+                                        <Link title="Projects" to="/project"
+                                            className="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
+                                            <img className="img25" src="assets/images/article.png" alt="Products" />
                                             <span>Projects</span>
                                         </Link>
                                     </li>
-                                    <li class={Link_checker[3]}>
-                                        <Link title="Categories" to="/categories"
-                                            class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
-                                            <img class="img24" src="assets/images/categorie.png" alt="Categories" />
-                                            <span>Categories</span>
+                                    <li className={Link_checker[3]}>
+                                        <Link title="Blogs" to="/blogsAdmin"
+                                            className="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
+                                            <img className="img24" src="assets/images/categorie.png" alt="Categories" />
+                                            <span>Blogs</span>
                                         </Link>
                                     </li>
-                                    <li class={Link_checker[4]}>
+                                    <li className={Link_checker[4]}>
                                         <Link title="CodePromos" to="/codepromos"
-                                            class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
-                                            <img class="img24" src="assets/images/coupon.png" alt="Categories" />
+                                            className="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
+                                            <img className="img24" src="assets/images/coupon.png" alt="Categories" />
                                             <span>Code Promos</span>
                                         </Link>
                                     </li>
-                                    <li class={Link_checker[5]}>
+                                    <li className={Link_checker[5]}>
                                         <Link title="Commands" to="/commands"
-                                            class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
-                                            <img class="img25" src="assets/images/command.png" alt="Categories" />
+                                            className="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
+                                            <img className="img25" src="assets/images/command.png" alt="Categories" />
                                             <span>Commands</span>
                                         </Link>
                                     </li>
-                                    <li class={Link_checker[6]}>
+                                    <li className={Link_checker[6]}>
                                         <Link title="Comments" to="/comments"
-                                            class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
-                                            <img class="img25" src="assets/images/comment.png" alt="Comments" />
+                                            className="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
+                                            <img className="img25" src="assets/images/comment.png" alt="Comments" />
                                             <span>Comments</span>
                                         </Link>
                                     </li>
-                                    <li class={Link_checker[7]}>
+                                    <li className={Link_checker[7]}>
                                         <Link title="Settings" to="/settings"
-                                            class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
-                                            <img class="img25" src="assets/images/settings.png" alt="Settings" />
+                                            className="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
+                                            <img className="img25" src="assets/images/settings.png" alt="Settings" />
                                             <span>Settings</span>
                                         </Link>
                                     </li>
-                                    <li class="ms-0 mb-2 me-3 nav-item d-flex justify-content-start align-items-center">
+                                    <li className="ms-0 mb-2 me-3 nav-item d-flex justify-content-start align-items-center">
                                         <Link title="LogOut" to="#"
-                                            class="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
-                                            <img class="img25" src="assets/images/logout.png" alt="logout" />
+                                            className="nav-link me-2 d-flex justify-content-center align-items-center gap-3">
+                                            <img className="img25" src="assets/images/logout.png" alt="logout" />
                                             <span>LogOut</span>
                                         </Link>
                                     </li>
@@ -146,22 +126,22 @@ const SideBar = () => {
                     </div>
                 </header>
             </div>
-            <nav class="nav__bar d-flex justify-content-between px-4 align-items-center">
+            <nav className="nav__bar d-flex justify-content-between px-4 align-items-center">
 
-                <div class="d-flex">
-                    <div class="toogle pointer d-flex">
-                        <img class="tog_button" src="assets/images/tog.png" alt="toogle" />
+                <div className="d-flex">
+                    <div className="toogle pointer d-flex">
+                        <img className="tog_button" src="assets/images/tog.png" alt="toogle" />
                     </div>
-                    <input class="input_search " type="text" placeholder="Search" />
+                    <input className="input_search " type="text" placeholder="Search" />
                     <a href="">
-                        <img class="input_button" src="assets/images/search.png" alt="img" />
+                        <img className="input_button" src="assets/images/search.png" alt="img" />
                     </a>
                 </div>
 
-                <div class="item-admin d-flex justify-content-between gap-3 align-items-center">
-                    <Link class="d-flex adminName nav-link text-black pointer m-0" to="/settings">
-                        <img class="mx-3" src="assets/images/user.png" width="35px" height="35px" alt="user" />
-                        <span class="mx-1 my-1">User Name</span>
+                <div className="item-admin d-flex justify-content-between gap-3 align-items-center">
+                    <Link className="d-flex adminName nav-link text-black pointer m-0" to="/settings">
+                        <img className="mx-3" src="assets/images/user.png" width="35px" height="35px" alt="user" />
+                        <span className="mx-1 my-1">User Name</span>
                     </Link>
                     <Link to="/settings">
                         <img className='settings_button' src="assets/images/settings.png" alt="param" />

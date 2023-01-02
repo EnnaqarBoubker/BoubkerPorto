@@ -129,7 +129,9 @@ const About = () => {
                             </div>
                         </div> 
                         */}
-                        <div className='cast'>gg</div>
+                        <div className='cast'>
+                            <img src="assets/images/home-bg.jpg" alt='cast' />   
+                        </div>
                     </div> 
                 </div>
             </div> 

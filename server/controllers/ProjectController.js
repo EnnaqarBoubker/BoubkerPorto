@@ -9,7 +9,9 @@ const asyncHandler = require('express-async-handler')
 
 const addProject = asyncHandler(async (req, res, next) => {
     const { title, techno, description } = req.body
-    if (!title || !techno || !description || !req.files) {
+    // const img = req.file.path
+    // console.log(img);
+    if (!title || !techno || !description) {
         res.status(400)
         throw new Error('Please Add All fildes')
     }

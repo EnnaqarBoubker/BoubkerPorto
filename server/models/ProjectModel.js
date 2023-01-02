@@ -10,7 +10,7 @@ const ProjectSchema = new Schema({
         required: true,
     },
     techno: {
-        type: [String],
+        type: String,
         required: true
     },
     description: {

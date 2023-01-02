@@ -10,7 +10,7 @@ const Login = () => {
   const { email, password } = formData;
   const [error, setError] = useState(false);
   const [errorPassword, setErrorPassword] = useState(false);
-  const [name, setName] = useState("");
+  const [nom, setNom] = useState("");
   
 
   const navigate = useNavigate();
@@ -41,8 +41,9 @@ const Login = () => {
       console.log(res);
       const roles = res?.data?.role;
       const name = res?.data?.name;
-      console.log(name);
-      setName(name);
+      // console.log(name);
+      setNom(name);
+      console.log(nom);
 
       localStorage.setItem("role", roles);
       localStorage.setItem("email", email);
@@ -66,7 +67,7 @@ const Login = () => {
           <label class="form-label">
             Email address
           </label>
-          <input type="email" class="form-control" name='email' placeholder='youremail.@gmail.com' onChange={onChange} value={email}/>
+          <input style={{ textTransform: 'lowercase' }} type="email" class="form-control" name='email' placeholder='youremail.@gmail.com' onChange={onChange} value={email}/>
           {error && formData.email.length <= 0 ? <p style={{ 'color': 'red', fontSize: '12px' }}> Email can not be empty</p> : ''}
         </div>
 
@@ -74,7 +75,7 @@ const Login = () => {
           <label class="form-label" >
             Password
           </label>
-          <input type="password" class="form-control" name='password' placeholder='*******' onChange={onChange} value={password}/>
+          <input style={{ textTransform: 'lowercase' }} type="password" class="form-control" name='password' placeholder='*******' onChange={onChange} value={password}/>
           {error && formData.password.length <= 0 ? <p style={{ 'color': 'red', fontSize: '12px' }}> Password can not be empty</p> : ''}
         </div>
 

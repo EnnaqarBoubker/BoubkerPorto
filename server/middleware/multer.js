@@ -14,11 +14,11 @@ exports.upload = multer({
     storage: storeImage,
     limits: { fileSize: '5000000' },
     fileFilter: (req, file, cb) => {
-        const exts = /jpeg|png|jpg|gif/
+        const exts = /jpeg|png|jpg|gif|PNG/
         const fileType = exts.test(file.mimetype)
         const imgExt = exts.test(path.extname(file.originalname))
         if(fileType && imgExt) return cb(null, true)
         cb(JSON.stringify('file uploded is invalid'))
         
     }
-}).array('image',4)
+}).array('image', 4)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation, Outlet, Navigate } from 'react-router-dom'
-import Unauthorized from '../components/Unauthorized'
+import Unauthorized from '../components/admin/Unauthorized'
 
 const RequireAuth = ({ Roles }) => {
 

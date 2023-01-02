@@ -9,6 +9,7 @@ const asyncHandler = require('express-async-handler')
 
 const addComment = asyncHandler(async (req, res, next) => {
     const { name, email, comment } = req.body
+
     if (!name || !email || !comment) {
         res.status(400)
         throw new Error('Please Add All fildes')
@@ -17,7 +18,8 @@ const addComment = asyncHandler(async (req, res, next) => {
         const comments = await CommentModel.create({
             name: name,
             email: email,
-            comment: comment
+            comment: comment,
+            
         })
         if(!comments){
             res.status(400)
